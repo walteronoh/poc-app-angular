@@ -1,0 +1,13 @@
+<div>
+    <h4>Generate Report</h4>
+    <form (ngSubmit)="onSubmit()">
+        <label>Choose Month To Generate Report</label><br/>
+        <select name="month" [(ngModel)]="month" (change)="checkInput()">    
+            <option value="">--Choose Month--</option>
+            <option *ngFor="let monthName of months" value={{monthName}}>{{monthName}}</option>
+        </select>
+        <input type="submit" value="Show Report" />
+        <p class="error">{{error}}</p>
+    </form>
+</div>
+

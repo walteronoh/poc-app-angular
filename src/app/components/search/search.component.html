@@ -1,0 +1,28 @@
+<div class="search-form">
+    <h4>Search Patient</h4>
+    <form>
+        <label>Search</label><br />
+        <input type="text" (keyup)="searchValue()" [(ngModel)]="search" name="search" placeholder="Search.." />
+        <p class="error">{{error}}</p>
+    </form>
+    <table>
+        <tr>
+            <th>Patient Id</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Date Of Birth</th>
+            <th>Phone Number</th>
+            <th>HIV Status</th>
+        </tr>
+        <tbody>
+            <tr>
+                <td>3</td>
+                <td>Test Judy</td>
+                <td>M</td>
+                <td>1978-09-12</td>
+                <td>0723786456</td>
+                <td>Unknown</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

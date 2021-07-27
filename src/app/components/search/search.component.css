@@ -1,0 +1,16 @@
+form{
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+}
+form label{
+    position: absolute;
+    left: 0;
+}
+form input{
+    width: 100%;
+    margin-top: 15px;
+}
+.error{
+    color: #ff6347;
+}
