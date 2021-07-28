@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule, Routes } from '@angular/router';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,17 +11,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BodyComponent } from './components/body/body.component';
 import { ReportComponent } from './components/report/report.component';
-
-const appRoutes:Routes = [
-  {
-    path:"search",
-    component:SearchComponent
-  },
-  {
-    path:"report",
-    component:ReportComponent
-  }
-]
+import { TableComponent } from './components/table/table.component';
 
 
 @NgModule({
@@ -31,14 +21,15 @@ const appRoutes:Routes = [
     HeaderComponent,
     FooterComponent,
     BodyComponent,
-    ReportComponent
+    ReportComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    MDBBootstrapModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

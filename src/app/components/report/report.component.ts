@@ -10,6 +10,8 @@ export class ReportComponent implements OnInit {
   month: string = "";
   error: string = "";
   months: Array<string> = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  header: Array<string> = ["Month","Location","HIV Positive","HIV Negative"];
+  reports: Array<any> = [];
 
   constructor(private apiService:ApiService) { }
 
@@ -26,12 +28,13 @@ export class ReportComponent implements OnInit {
 
   onSubmit = (): any => {
     if(this.month !== ""){
-      this.apiService.getReportByMonth(this.month).subscribe((resp)=>{
-        if(resp.length === 0){
+      this.apiService.getReportByMonth(this.month).subscribe((response)=>{
+        if(response.length === 0){
           this.error = `No Reports Found For ${this.month}`;
         }else{
           this.error = "";
-          console.log(resp);
+          this.reports = response
+          console.log(response)
         }
       });
     }

@@ -17,8 +17,8 @@ export class ApiService {
   }
 
   getReportByMonth = (month: string): Observable<[]> => {
-      const url = this.apiUrl + "monthReport";
-      const params = new HttpParams().set("month",month);
-      return this.http.get<[]>(url,{params:params});
+    const url = this.apiUrl + "monthReport";
+    const params = new HttpParams().set("month", month);
+    return this.http.get<[]>(url, { params: params });
   }
 }

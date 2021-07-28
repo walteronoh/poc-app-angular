@@ -5,24 +5,20 @@
         <input type="text" (keyup)="searchValue()" [(ngModel)]="search" name="search" placeholder="Search.." />
         <p class="error">{{error}}</p>
     </form>
-    <table>
-        <tr>
-            <th>Patient Id</th>
-            <th>Name</th>
-            <th>Gender</th>
-            <th>Date Of Birth</th>
-            <th>Phone Number</th>
-            <th>HIV Status</th>
-        </tr>
+
+    <table mdbTable>
+        <thead>
+          <tr>
+            <th *ngFor="let head of header" scope="col">{{head}} </th>
+          </tr>
+        </thead>
         <tbody>
-            <tr>
-                <td>3</td>
-                <td>Test Judy</td>
-                <td>M</td>
-                <td>1978-09-12</td>
-                <td>0723786456</td>
-                <td>Unknown</td>
-            </tr>
+          <tr mdbTableCol *ngFor="let el of patients">
+            <td>{{el.name}}</td>
+            <td>{{el.gender}}</td>
+            <td>{{el.dob}}</td>
+            <td>{{el.phone_number}}</td>
+          </tr>
         </tbody>
-    </table>
+      </table>
 </div>

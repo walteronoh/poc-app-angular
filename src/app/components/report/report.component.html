@@ -9,5 +9,22 @@
         <input type="submit" value="Show Report" />
         <p class="error">{{error}}</p>
     </form>
+
+    <table mdbTable>
+        <thead>
+          <tr>
+            <th *ngFor="let head of header" scope="col">{{head}} </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr mdbTableCol *ngFor="let el of reports">
+            <td>{{el.encounter_datetime}}</td>
+            <td>{{el.location}}</td>
+            <td>{{el.positive}}</td>
+            <td>{{el.negative}}</td>
+          </tr>
+        </tbody>
+      </table>
 </div>
+
 
