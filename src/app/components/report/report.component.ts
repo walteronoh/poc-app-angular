@@ -9,11 +9,13 @@ import { ApiService } from 'src/app/services/api.service';
 export class ReportComponent implements OnInit {
   month: string = "";
   error: string = "";
-  months: Array<string> = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-  header: Array<string> = ["Month","Location","HIV Positive","HIV Negative"];
+  months: Array<string> = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  header: Array<string> = ["Month", "Location", "HIV Positive", "HIV Negative", "Unknown"];
+  patient_list_header: Array<string> = ["Patient Name","Encounter Date","Location","HIV Status","Gender","Age"];
+  patient_list_data : Array<any> = [];
   reports: Array<any> = [];
 
-  constructor(private apiService:ApiService) { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
   }
@@ -26,18 +28,24 @@ export class ReportComponent implements OnInit {
     }
   }
 
-  onSubmit = (): any => {
-    if(this.month !== ""){
-      this.apiService.getReportByMonth(this.month).subscribe((response)=>{
-        if(response.length === 0){
+  onSubmit = (): void => {
+    if (this.month !== "") {
+      this.apiService.getReportByMonth(this.month).subscribe((response) => {
+        if (response.length === 0) {
           this.error = `No Reports Found For ${this.month}`;
-        }else{
+        } else {
           this.error = "";
           this.reports = response
           console.log(response)
         }
       });
     }
+  }
+
+  getPatientsByStatus = (status: string, reportDate: string): void => {
+    this.apiService.getPatientsByStatus(status, reportDate).subscribe((response) => {
+      this.patient_list_data = response;
+    })
   }
 
 }

@@ -10,7 +10,8 @@ export class SearchComponent implements OnInit {
   search: string = "";
   error: string = "";
   patients: any = [];
-  header = ['Name', 'Gender', 'DOB', 'Phone Number'];
+  show:boolean = false;
+  header = ['Name', 'Gender', 'DOB', 'Phone Number', 'Hiv Status'];
 
   constructor(private apiService: ApiService) { }
 
@@ -21,13 +22,20 @@ export class SearchComponent implements OnInit {
     if (this.search === "") {
       this.error = "";
     } else {
-      if (this.search.length > 3) {
+      if (this.search.length >3) {
         this.error = "";
         this.apiService.getPatients(this.search).subscribe((response) => {
-          this.patients = response
+          if(response.length < 1){
+            this.error = "User Not Found";
+            this.show = false
+          }else{
+            this.patients = response
+            this.show = !this.show
+          }
         })
       } else {
         this.error = "Enter 2 Or More Values";
+        this.show = false
       }
     }
   }

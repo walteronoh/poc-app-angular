@@ -6,7 +6,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
-  apiUrl: string = "http://localhost:8000/";
+  apiUrl: string = "http://localhost:8080/";
 
   constructor(private http: HttpClient) { }
 
@@ -19,6 +19,12 @@ export class ApiService {
   getReportByMonth = (month: string): Observable<[]> => {
     const url = this.apiUrl + "monthReport";
     const params = new HttpParams().set("month", month);
+    return this.http.get<[]>(url, { params: params });
+  }
+
+  getPatientsByStatus = (status: string, reportDate: string): Observable<[]> => {
+    const url = this.apiUrl + "patientsStatus";
+    const params = new HttpParams().set("status", status).set("reportDate", reportDate);
     return this.http.get<[]>(url, { params: params });
   }
 }

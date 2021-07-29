@@ -20,8 +20,27 @@
           <tr mdbTableCol *ngFor="let el of reports">
             <td>{{el.encounter_datetime}}</td>
             <td>{{el.location}}</td>
-            <td>{{el.positive}}</td>
-            <td>{{el.negative}}</td>
+            <td (click)="getPatientsByStatus('Positive',el.encounter_datetime)">{{el.positive}}</td>
+            <td (click)="getPatientsByStatus('Negative',el.encounter_datetime)">{{el.negative}}</td>
+            <td (click)="getPatientsByStatus('Unknown',el.encounter_datetime)">{{el.unknowns}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table mdbTable>
+        <thead>
+          <tr>
+            <th *ngFor="let head of patient_list_header" scope="col">{{head}} </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr mdbTableCol *ngFor="let el of patient_list_data">
+            <td>{{el.patient_name}}</td>
+            <td>{{el.encounter_datetime}}</td>
+            <td>{{el.location}}</td>
+            <td>{{el.hiv_status}}</td>
+            <td>{{el.gender}}</td>
+            <td>{{el.age}}</td>
           </tr>
         </tbody>
       </table>
