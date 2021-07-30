@@ -6,7 +6,7 @@
         <p class="error">{{error}}</p>
     </form>
 
-    <table *ngIf="show" mdbTable>
+    <table *ngIf="patients?.length > 0" mdbTable>
         <thead>
           <tr>
             <th *ngFor="let head of header" scope="col">{{head}} </th>
