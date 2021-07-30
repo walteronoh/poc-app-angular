@@ -6,5 +6,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - run: npm ci
-      - run: ng test
+      - run: npm npm install
+      - run: npm run build -- --prod
