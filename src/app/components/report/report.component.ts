@@ -9,23 +9,14 @@ import { ApiService } from 'src/app/services/api.service';
 export class ReportComponent implements OnInit {
   month: string = "";
   error: string = "";
-  months: Array<string> = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   header: Array<string> = ["Month", "Location", "HIV Positive", "HIV Negative", "Unknown"];
-  patient_list_header: Array<string> = ["Patient Name","Encounter Date","Location","HIV Status","Gender","Age"];
-  patient_list_data : any = [];
+  patient_list_header: Array<string> = ["Patient Name", "Encounter Date", "Location", "HIV Status", "Gender", "Age"];
+  patient_list_data: any = [];
   reports: any = [];
 
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
-  }
-
-  checkInput = (): any => {
-    if (this.month === "") {
-      this.error = "Select One Of The Months";
-    } else {
-      this.error = "";
-    }
   }
 
   onSubmit = (): void => {
@@ -42,11 +33,13 @@ export class ReportComponent implements OnInit {
     }
   }
 
-  getPatientsByStatus = (status: string, reportDate: string): void => {
-    this.apiService.getPatientsByStatus(status, reportDate).subscribe((response) => {
-      this.patient_list_data = response;
-      this.reports = [];
-    })
+  getPatientsByStatus = (status: string, total: number, reportDate: string): void => {
+    if (total !== 0) {
+      this.apiService.getPatientsByStatus(status, reportDate).subscribe((response) => {
+        this.patient_list_data = response;
+        this.reports = [];
+      })
+    }
   }
 
 }

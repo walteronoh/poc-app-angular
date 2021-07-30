@@ -2,10 +2,11 @@
     <h4>Generate Report</h4>
     <form (ngSubmit)="onSubmit()">
         <label>Choose Month To Generate Report</label><br/>
-        <select name="month" [(ngModel)]="month" (change)="checkInput()">    
+        <!-- <select name="month" [(ngModel)]="month" (change)="checkInput()">    
             <option value="">--Choose Month--</option>
             <option *ngFor="let monthName of months" value={{monthName}}>{{monthName}}</option>
-        </select>
+        </select> -->
+        <input type="month" name="month" [(ngModel)]="month"/>
         <input type="submit" value="Show Report" />
         <p class="error">{{error}}</p>
     </form>
@@ -20,9 +21,9 @@
           <tr mdbTableCol *ngFor="let el of reports">
             <td>{{el.encounter_datetime}}</td>
             <td>{{el.location}}</td>
-            <td (click)="getPatientsByStatus('Positive',el.encounter_datetime)">{{el.positive}}</td>
-            <td (click)="getPatientsByStatus('Negative',el.encounter_datetime)">{{el.negative}}</td>
-            <td (click)="getPatientsByStatus('Unknown',el.encounter_datetime)">{{el.unknowns}}</td>
+            <td (click)="getPatientsByStatus('Positive',el.positive,el.encounter_datetime)">{{el.positive}}</td>
+            <td (click)="getPatientsByStatus('Negative',el.negative,el.encounter_datetime)">{{el.negative}}</td>
+            <td (click)="getPatientsByStatus('Unknown',el.unknowns,el.encounter_datetime)">{{el.unknowns}}</td>
           </tr>
         </tbody>
       </table>
