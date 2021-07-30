@@ -19,7 +19,14 @@ describe('HeaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create component: "HeaderComponent"', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should contain header "poc using angular"',()=>{
+    fixture.detectChanges();
+    const compile = fixture.nativeElement as HTMLElement;
+    const h2 = compile.querySelector("h2");
+    expect(h2?.textContent).toContain("poc using angular");
+  })
 });

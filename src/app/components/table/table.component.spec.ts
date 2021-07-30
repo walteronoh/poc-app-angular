@@ -19,7 +19,7 @@ describe('TableComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create component: "TableComponent"', () => {
     expect(component).toBeTruthy();
   });
 });

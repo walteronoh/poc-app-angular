@@ -19,7 +19,21 @@ describe('BodyComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create component: "BodyComponent"', () => {
     expect(component).toBeTruthy();
+  });
+
+  it("should contain a link with 'Search'",()=>{
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    const a = compiled.querySelector('a.search-link');
+    expect(a?.textContent).toContain("Search");
+  });
+
+  it("should contain a link with 'Report'",()=>{
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    const a = compiled.querySelector('a.report-link');
+    expect(a?.textContent).toContain("Reports");
   });
 });
